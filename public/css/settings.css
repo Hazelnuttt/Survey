@@ -1,0 +1,66 @@
+body{
+    background: #eee;
+}
+.container1{
+    margin-top: 80px;
+}
+.container3 {
+    margin-top: 70px;
+    display: flex;
+    /*flex-direction: column;*/
+    max-height: 600px;
+    /*overflow-y: scroll;*/
+}
+.container3 .container4 {
+    flex: 1;
+    overflow-y: scroll;
+    background: white;
+}
+.container5{
+    padding-top: 30px;
+}
+#inputEmail{
+    height: 40px;
+}
+#inputPassword{
+    height: 40px;
+}
+#Passwordvalidation{
+    height: 40px;
+}
+div.pull-right{
+    color: white;
+    padding-top: 15px;
+}
+h1{
+    text-align: center;
+}
+.survey-main {
+    position: relative;
+    padding: 34px 72px 84px;
+    margin: 0 auto;
+
+    background-color: #ffffff;
+    border: 1px solid #1e63ca;
+
+}
+.glyphicon-asterisk{
+    color: red;
+}
+.glyphicon-minus{
+    color: red;
+    /*font-size: 30px;*/
+}
+.glyphicon-plus{
+    color: red;
+    /*font-size: 25px;*/
+}
+img{
+    border:1px solid #1e63ca ;
+}
+.bottom {
+    padding-top: 300px;
+}
+.panel-heading{
+    text-align: center;
+}
