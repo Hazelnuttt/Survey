@@ -159,7 +159,7 @@ class SurveyController extends Controller
     {
         $student = Survey::find($id);
         $timesg = $student -> fav_time;
-        $restaurantsg = $student ->fav_reataurant;
+        $restaurantsg = $student ->fav_restaurant;
 
         if($request -> isMethod('post')){
             $this -> validate($request,[
