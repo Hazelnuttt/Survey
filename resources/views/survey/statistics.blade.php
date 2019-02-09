@@ -45,7 +45,7 @@
             </table>
         </div>
 
-        <a href="{{asset('survey/update')}}" class="btn btn-info pull-left">修改</a>
+        <a href="{{url('survey/update',['id' =>Auth::user()->id ])}}" class="btn btn-info pull-left">修改</a>
 
 
         <div class="pull-right">

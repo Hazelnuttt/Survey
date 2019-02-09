@@ -95,6 +95,7 @@ class SurveyController extends Controller
 //            return response('请勿重复提交',403);
 //        }
 
+
         if($request -> isMethod('post')){
             $this -> validate($request,[
                 'Student.name' => 'required|min:2|max:4',
@@ -106,60 +107,59 @@ class SurveyController extends Controller
                 'Student.age' => ':attribute age',
                 'Student.phonenum'=> ':attribute phonenumber'
             ]) ;
-        }
+            $data0 = $request -> input('Student');
+            $times = $request -> input('Time');
+            $restaurants = $request -> input('Restaurant');
 
 
-
-        $data0 = $request -> input('Student');
-        $times = $request -> input('Time');
-        $restaurants = $request -> input('Restaurant');
+            $student = new Survey();
 
 
-        $student = new Survey();
-
-
-        $student -> name = $data0['name'];
-        $student ->age = $data0['age'];
-        $student ->gender = $data0['gender'];
-        $student ->phonenum = $data0['phonenum'];
+            $student -> name = $data0['name'];
+            $student ->age = $data0['age'];
+            $student ->gender = $data0['gender'];
+            $student ->phonenum = $data0['phonenum'];
 
 
 
 
-        if($student -> save()){
-            $sid  =  $student -> id;
+            if($student -> save()){
+                $sid  =  $student -> id;
 //            $time = new Fav_time();
 //            $time -> s_id = $sid;
 //            $time -> time = $time;
 //            $time -> save();
 
-            foreach ($times as $time){
-                $time1 = new Fav_time();
-                $time1 -> s_id = $sid;
-                $time1 -> time = $time;
-                $time1 -> save();
-            }
+                foreach ($times as $time){
+                    $time1 = new Fav_time();
+                    $time1 -> s_id = $sid;
+                    $time1 -> time = $time;
+                    $time1 -> save();
+                }
 
-            foreach ($restaurants as $restaurant){
-                $restaurant1 =new Fav_restaurant();
-                $restaurant1 ->s_id = $sid;
-                $restaurant1 ->restaurant = $restaurant;
-                $restaurant1 ->save();
-            }
+                foreach ($restaurants as $restaurant){
+                    $restaurant1 =new Fav_restaurant();
+                    $restaurant1 ->s_id = $sid;
+                    $restaurant1 ->restaurant = $restaurant;
+                    $restaurant1 ->save();
+                }
 
 
 //            dd([$time,$restaurant]);
-            return redirect('survey/statistics')-> with('success','添加成功');
-        }else{
-            return redirect() -> back()-> with('fail','添加失败');
+                return redirect('survey/statistics')-> with('success','添加成功');
+            }else{
+                return redirect() -> back()-> with('fail','添加失败');
+            }
         }
 
-
     }
+
+
     public function update(Request $request,$id)
     {
         $student = Survey::find($id);
-
+        $timesg = $student -> fav_time;
+        $restaurantsg = $student ->fav_reataurant;
 
         if($request -> isMethod('post')){
             $this -> validate($request,[
@@ -172,10 +172,54 @@ class SurveyController extends Controller
                 'Student.age' => ':attribute age',
                 'Student.phonenum'=> ':attribute phonenumber'
             ]) ;
+            $data0 = $request -> input('Student');
+            $times = $request -> input('Time');
+            $restaurants = $request -> input('Restaurant');
+
+
+
+
+            $student -> name = $data0['name'];
+            $student ->age = $data0['age'];
+            $student ->gender = $data0['gender'];
+            $student ->phonenum = $data0['phonenum'];
+
+
+
+
+            if($student -> save()){
+
+//            $time = new Fav_time();
+//            $time -> s_id = $sid;
+//            $time -> time = $time;
+//            $time -> save();
+
+                foreach ($times as $time){
+                   $timesgs[] =$timesg;
+//                    $timesg -> s_id = $id;
+                    $timesg -> time = $time;
+                    $timesg -> save();
+                }
+
+                foreach ($restaurants as $restaurant){
+                    $restaurantsgs[] =$restaurantsg;
+//                    $restaurantsg ->s_id = $id;
+                    $restaurantsg ->restaurant = $restaurant;
+                    $restaurantsg ->save();
+                }
+
+
+//            dd([$time,$restaurant]);
+                return redirect('survey/statistics')-> with('success','添加成功');
+            }else{
+                return redirect() -> back()-> with('fail','添加失败');
+            }
         }
-        return view('survey.update',['student' => $student]);
 
 
+
+//            dd([$time,$restaurant]);
+            return view('survey/update',['student' =>$student]);
 
 
     }

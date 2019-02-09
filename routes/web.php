@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['middleware' => ['web']],function (){
+Route::group(['middleware' => ['web','auth']],function (){
     Route::get('survey/signin',['uses' => 'SurveyController@signin']);
     Route::get('survey/signup',['uses' => 'SurveyController@signup']);
     Route::get('survey/myland2',['uses' => 'SurveyController@myland2']);
@@ -33,3 +33,5 @@ Route::group(['middleware' => ['web']],function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

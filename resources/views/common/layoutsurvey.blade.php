@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Survey</title>
-    <link rel="stylesheet" href="{{asset('css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('fonts/glyphicons-halflings-regular.eot')}}">
-</head>
-<body>
-<div class="container">
-    <h1>聚餐报名</h1>
-    <div class="survey-main">
-        <form action="{{url('survey/save')}}" method="post" class="form-group">
-            {{ csrf_field() }}
+
             <div class="row">
                 <div class="form-group col-lg-6 col-lg-offset-3">
                     <label for="name" class="col-lg-2 col-lg-offset-1"><span class="glyphicon glyphicon-asterisk"></span>姓名</label>
                     <div class="col-lg-8">
                         <input type="text" name="Student[name]" class="form-control" id="name"
-                               value="{{old('Student')['name'] ? old('Student')['name'] : $student ->name}}"
+                               value="{{old('Student')['name'] ? old('Student')['name']:$student ->name }}"
                                placeholder="请输入姓名">
                     </div>
                 </div>
@@ -31,7 +17,7 @@
                     <label for="age" class="col-lg-2 col-lg-offset-1"><span class="glyphicon glyphicon-asterisk"></span>年龄</label>
                     <div class="col-lg-8">
                         <input type="text" name="Student[age]" class="form-control" id="age"
-                               value="{{old('Student')['age'] ? old('Student')['age'] : $student ->age}}"
+                               value="{{old('Student')['age'] ? old('Student')['age']:$student ->age}}"
                                placeholder="请输入年龄">
                     </div>
                 </div>
@@ -44,10 +30,12 @@
                     <label class="col-lg-2 col-lg-offset-1"><span class="glyphicon glyphicon-asterisk"></span>性别</label>
                     <div class="col-lg-8">
                         <label class="radio-inline">
-                            <input type="radio" name="Student[gender]" value="M">男
+                            <input type="radio" name="Student[gender]" value="M"
+                                    {{$student ->gender == true ? 'checked':''}}>男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="Student[gender]" value="F">女
+                            <input type="radio" name="Student[gender]" value="F"
+                                    {{$student ->gender == true ? 'checked':''}}>女
                         </label>
                     </div>
                 </div>
@@ -57,7 +45,7 @@
                     <label for="phone" class="col-lg-2 col-lg-offset-1"><span class="glyphicon glyphicon-asterisk"></span>手机号</label>
                     <div class="col-lg-8">
                         <input type="text" name="Student[phonenum]" class="form-control"
-                               value="{{old('Student')['phonenum'] ? old('Student')['phonenum'] : $student ->phonenum}}"
+                               value="{{old('Student')['phonenum'] ? old('Student')['phonenum']:$student ->phonenum}}"
                                id="phone" placeholder="请输入手机号">
                     </div>
                 </div>
@@ -104,18 +92,3 @@
                 </div>
             </div>
             <button class="btn btn-primary col-lg-offset-6" type="submit">提交</button>
-        </form>
-
-        <div class="container5">
-            @section('message')
-            @show
-        </div>
-
-    </div>
-</div>
-
-
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-</body>
-</html>
