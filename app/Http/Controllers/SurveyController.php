@@ -159,9 +159,10 @@ class SurveyController extends Controller
     {
         $student = Survey::find($id);
 
-        Fav_time::where('s_id',$id) ->delete();
-        Fav_restaurant::where('s_id',$id) ->delete();
+
         if($request -> isMethod('post')){
+            Fav_time::where('s_id',$id) ->delete();
+            Fav_restaurant::where('s_id',$id) ->delete();
             $this -> validate($request,[
                 'Student.name' => 'required|min:2|max:4',
                 'Student.age' => 'required|min:10|max:30|integer',
@@ -181,7 +182,8 @@ class SurveyController extends Controller
             $student ->phonenum = $data0['phonenum'];
 //            dd($student);
             if($student -> save()){
-
+//                dd($student);
+                //时间戳有坑
                 foreach ($times as $time){
                     $time1 = new Fav_time();
                     $time1 -> s_id = $id;

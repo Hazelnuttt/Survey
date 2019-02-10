@@ -28,6 +28,11 @@ class Survey extends Model
         return $value;
     }
 
+    public function fromDateTime($value)
+    {
+        return empty($value) ? $value : $this->getDateFormat();
+    }
+
 const boy = 'M',
     girl = 'F';
 
@@ -55,6 +60,8 @@ const boy = 'M',
     {
         return $this -> hasMany('App\Fav_time','s_id','id');
     }
+
+
 
 
 }
