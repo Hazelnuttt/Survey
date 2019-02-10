@@ -11,7 +11,7 @@
 <div class="container">
     <h1>聚餐报名</h1>
     <div class="survey-main">
-        <form action="{{url('survey/update',['id' => Auth::user()->id])}}" method="post" class="form-group">
+        <form action="{{url('survey/update',['id' => $student->id])}}" method="post" class="form-group">
             {{ csrf_field() }}
          @include('common.layoutsurvey')
         </form>

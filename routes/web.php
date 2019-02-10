@@ -25,7 +25,7 @@ Route::group(['middleware' => ['web','auth']],function (){
     Route::any('survey/survey',['uses' => 'SurveyController@survey']);
     Route::get('survey/presurvey',['uses' => 'SurveyController@presurvey']);
     Route::any('survey/save',['uses' => 'SurveyController@save']);
-    Route::get('survey/update/{id}',['uses' => 'SurveyController@update']);
+    Route::any('survey/update/{id}',['uses' => 'SurveyController@update']);
     Route::any('survey/statistics',['uses' => 'SurveyController@statistics']);
 });
 

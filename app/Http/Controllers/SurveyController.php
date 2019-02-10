@@ -158,9 +158,9 @@ class SurveyController extends Controller
     public function update(Request $request,$id)
     {
         $student = Survey::find($id);
-        $timesg = $student -> fav_time;
-        $restaurantsg = $student ->fav_restaurant;
 
+        Fav_time::where('s_id',$id) ->delete();
+        Fav_restaurant::where('s_id',$id) ->delete();
         if($request -> isMethod('post')){
             $this -> validate($request,[
                 'Student.name' => 'required|min:2|max:4',
@@ -175,56 +175,36 @@ class SurveyController extends Controller
             $data0 = $request -> input('Student');
             $times = $request -> input('Time');
             $restaurants = $request -> input('Restaurant');
-
-
-
-
             $student -> name = $data0['name'];
             $student ->age = $data0['age'];
             $student ->gender = $data0['gender'];
             $student ->phonenum = $data0['phonenum'];
-
-
-
-
+//            dd($student);
             if($student -> save()){
 
-//            $time = new Fav_time();
-//            $time -> s_id = $sid;
-//            $time -> time = $time;
-//            $time -> save();
-
                 foreach ($times as $time){
-                   $timesgs[] =$timesg;
-//                    $timesg -> s_id = $id;
-                    $timesg -> time = $time;
-                    $timesg -> save();
+                    $time1 = new Fav_time();
+                    $time1 -> s_id = $id;
+                    $time1 -> time = $time;
+                    $time1 -> save();
                 }
-
+//                dd($time1);
                 foreach ($restaurants as $restaurant){
-                    $restaurantsgs[] =$restaurantsg;
-//                    $restaurantsg ->s_id = $id;
-                    $restaurantsg ->restaurant = $restaurant;
-                    $restaurantsg ->save();
+                    $restaurant1 =new Fav_restaurant();
+                    $restaurant1 ->s_id = $id;
+                    $restaurant1 ->restaurant = $restaurant;
+                    $restaurant1 ->save();
                 }
-
-
 //            dd([$time,$restaurant]);
                 return redirect('survey/statistics')-> with('success','添加成功');
             }else{
                 return redirect() -> back()-> with('fail','添加失败');
             }
         }
-
-
-
 //            dd([$time,$restaurant]);
-            return view('survey/update',['student' =>$student]);
-
+        return view('survey/update',['student' =>$student]);
 
     }
-
-
 
 
 }
