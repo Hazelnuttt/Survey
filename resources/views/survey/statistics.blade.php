@@ -1,13 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Statistics</title>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/settings.css')}}">
-</head>
-<body>
+@include('common.head1')
 <div class="container">
     <h1>统计</h1>
     <div class="survey-main">
@@ -54,8 +45,4 @@
     </div>
 </div>
 
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-
-</body>
-</html>
+@include('common.tail')

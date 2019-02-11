@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Myland - @yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/glyphicons-halflings-regular.eot')}}">
 </head>
 <body>
@@ -69,7 +69,7 @@
 </nav>
 <div class="container3">
 
-    <!--left 要路由-->
+    <!--left-->
     <div class="col-lg-8">
         <div class="col-lg-2 ">
             <img src="{{asset('images/survey.PNG')}}" width="178" height="251.42" alt="">
@@ -89,20 +89,15 @@
             <img src="{{asset('images/chirstmas.jpg')}}" width="178" height="251.42" alt="">
         </div>
     </div>
-    <!--right 要重点-->
-    <div class="col-lg-4 container4">
+    <!--right-->
+
         @yield('content')
 
-
-
-
-
-    </div>
 </div>
 
 
 <script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 </body>
 </html>

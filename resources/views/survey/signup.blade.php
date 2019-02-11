@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Thank you for registering</title>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/settings.css')}}">
 </head>
 <body>
@@ -26,6 +26,6 @@
 </div>
 
 <script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

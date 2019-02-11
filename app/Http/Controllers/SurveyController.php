@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Acti_info;
 use App\Fav_restaurant;
 use App\Fav_time;
 use App\Show;
@@ -39,7 +40,8 @@ class SurveyController extends Controller
 
     public function presurvey()
     {
-        return view('survey.presurvey');
+        $infos = Acti_info::all();
+        return view('survey.presurvey',['infos' => $infos]);
     }
 
     public function statistics()

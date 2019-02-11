@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Survey</title>
-    <link rel="stylesheet" href="{{asset('css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('fonts/glyphicons-halflings-regular.eot')}}">
-</head>
-<body>
+@include('common.head2')
+
 <div class="container">
     <h1>聚餐报名</h1>
     <div class="survey-main">
@@ -68,7 +60,7 @@
             <div class="row">
                 <div class="form-group col-lg-7 col-lg-offset-3">
                     <label class="col-lg-2 col-lg-offset-1">聚餐方便时间</label>
-                    <div class="col-lg-8">
+                    <div class="col-lg-9">
                         <label class="checkbox-inline">
                             <input type="checkbox" name="Time[time1]" value="9102-9-6"> 9102-9-6
                         </label>
@@ -115,10 +107,7 @@
 </div>
 
 
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-</body>
-</html>
+@include('common.tail')
 
 @section('message')
     @include('common.message')

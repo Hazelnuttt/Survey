@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <div class="col-lg-4 container4">
     <div class="row">
         <div class="col-lg-10">
             <h4>聚餐活动</h4>
@@ -55,6 +56,7 @@
             <span class="pull-right">Hello,{{ Auth::user()->name }}</span>
         </div>
     </nav>
+    </div>
 @stop
 
 
